@@ -5,7 +5,7 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/abiosoft/readline"
+	"github.com/MarekStancik/readline"
 )
 
 type (
@@ -60,16 +60,7 @@ func (s *shellReader) setMultiMode(use bool) {
 	s.readingMulti = use
 }
 
-func (s *shellReader) readLine(consumer chan lineString) {
-	s.Lock()
-	defer s.Unlock()
-
-	// already reading
-	if s.reading {
-		return
-	}
-	s.reading = true
-	// start reading
+func (s *shellReader) readLine() (string, error) {
 
 	// detect if print is called to
 	// prevent readline lib from clearing line.
@@ -93,7 +84,5 @@ func (s *shellReader) readLine(consumer chan lineString) {
 	// reset prompt
 	s.scanner.SetPrompt(shellPrompt)
 
-	ls := lineString{string(line), err}
-	consumer <- ls
-	s.reading = false
+	return line, err
 }

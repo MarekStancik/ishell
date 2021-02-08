@@ -18,7 +18,7 @@ import (
 	"unicode"
 	"unicode/utf8"
 
-	"github.com/abiosoft/readline"
+	"github.com/MarekStancik/readline"
 	"github.com/fatih/color"
 	shlex "github.com/flynn-archive/go-shlex"
 )
@@ -281,11 +281,7 @@ func (s *Shell) handleCommand(str []string) (bool, error) {
 }
 
 func (s *Shell) readLine() (line string, err error) {
-	consumer := make(chan lineString)
-	defer close(consumer)
-	go s.reader.readLine(consumer)
-	ls := <-consumer
-	return ls.line, ls.err
+	return s.reader.readLine()
 }
 
 func (s *Shell) read() ([]string, error) {
