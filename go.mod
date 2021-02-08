@@ -1,4 +1,4 @@
-module github.com/MarekStancik/ishell
+module github.com/MarekStancik/ishell/v2
 
 go 1.15
 
