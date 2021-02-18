@@ -226,6 +226,7 @@ func (s *Shell) Active() bool {
 
 // Process runs shell using args in a non-interactive mode.
 func (s *Shell) Process(args ...string) error {
+	s.rawArgs = args
 	return handleInput(s, args)
 }
 

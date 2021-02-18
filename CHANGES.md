@@ -1,5 +1,9 @@
 For now, dates (DD/MM/YYYY) are used until ishell gets stable enough to warrant tags.
 Attempts will be made to ensure non breaking updates as much as possible.
+
+#### 18/02/2020
+* Fixed RawArgs added to shell in `shell.Process(args)` method
+
 #### 28/05/2017
 * Added `shell.Process(os.Args[1:]...)` for non-interactive execution
 *
